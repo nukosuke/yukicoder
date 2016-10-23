@@ -1,0 +1,18 @@
+digraph state {
+  graph [rankdir = LR];
+  node [shape="doublecircle", width=1.5, fixedsize=true];
+  NO_HAND    [label="NO HAND"];
+  ONE_PAIR   [label="ONE PAIR"];
+  TWO_PAIR   [label="TWO PAIR"];
+  THREE_CARD [label="THREE CARD"];
+  FULL_HOUSE [label="FULL HOUSE"];
+
+  NO_HAND    -> ONE_PAIR   [label="2"];
+  NO_HAND    -> THREE_CARD [label="3"];
+  ONE_PAIR   -> TWO_PAIR   [label="2"];
+  ONE_PAIR   -> FULL_HOUSE [label="3"];
+  THREE_CARD -> FULL_HOUSE [label="2"];
+
+  {rank=same; ONE_PAIR; THREE_CARD}
+  {rank=same; TWO_PAIR; FULL_HOUSE}
+}
